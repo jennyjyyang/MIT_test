@@ -1,7 +1,4 @@
 # 忽略特定音檔
-voice_data/autobiography.wav
-voice_data/output.wav
-xoutput-audio-SPEAKER_02.wav
-x_output-audio-SPEAKER_03.wav
 *.mp3
 *.wav
+ 
