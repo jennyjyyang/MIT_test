@@ -76,6 +76,11 @@ def create_speaker_audio(input_audio_path, segments_data, speaker_id, output_pat
             segment_audio = audio[start_ms:end_ms]
             silent_audio = silent_audio.overlay(segment_audio, position=start_ms)
             #tmp_voice = tmp_voice.append(segment_audio, crossfade=0)
+    
+    # Check if the audio has meaningful sound; skip if silent
+    if silent_audio.rms < 100:
+        print(f"⚠️  Skipping {speaker_id}: audio is silent (rms={silent_audio.rms})")
+        return
             
     # Save the result
     print(f"Exporting audio file for {speaker_id}")
@@ -107,6 +112,17 @@ def process_audio(input_audio_path, json_path):
     except Exception as e:
         sys.exit(f"Error reading JSON file: {str(e)}")
     
+    # Rename speaker
+    speaker_map = {}
+    new_segments = []
+    for seg in segments_data["segments"]:
+        old_speaker = seg["speaker"]
+        if old_speaker not in speaker_map:
+            speaker_map[old_speaker] = f"speaker_{len(speaker_map):02d}"
+        seg["speaker"] = speaker_map[old_speaker]
+        new_segments.append(seg)
+    segments_data["segments"] = new_segments
+
     # Identify unique speakers
     speakers = set(segment['speaker'] for segment in segments_data.get('segments', []))
     if not speakers:
@@ -117,7 +133,9 @@ def process_audio(input_audio_path, json_path):
     # Process each speaker
     for speaker in speakers:
         #output_path = output_dir / f"output-audio-{speaker.lower()}.wav"
-        output_path = f"output-audio-{speaker}.wav"
+        output_dir = Path("voice_data/output")
+        output_dir.mkdir(parents=True, exist_ok=True)  # 確保資料夾存在
+        output_path = output_dir / f"output-audio-{speaker}.wav"
         print(f"\nProcessing speaker: {speaker}")
         create_speaker_audio(input_audio_path, segments_data, speaker, str(output_path))
         print(f"Successfully created: {output_path}")
@@ -166,3 +184,5 @@ if __name__ == "__main__":
     print("Audio Speaker Separation Tool")
     print("----------------------------")
     main()
+
+print ("不同人聲分離 完成!")

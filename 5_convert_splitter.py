@@ -2,8 +2,8 @@ import json
 from datetime import timedelta
 
 # 輸入和輸出檔案
-input_file = "voice_result_speakers.json"
-output_file = "segments_for_splitter.json"
+input_file = "voice_data/output/voice_result_speakers.json"
+output_file = "voice_data/output/segments_for_splitter.json"
 
 # 將秒數轉換為 HH:MM:SS,mmm 格式
 def format_timestamp(seconds):
@@ -35,4 +35,4 @@ for seg in segments:
 with open(output_file, "w", encoding="utf-8") as f:
     json.dump(converted, f, indent=4, ensure_ascii=False)
 
-print("已成功轉換格式為 speaker-splitter 可讀格式: segments_for_splitter.json")
+print("可讀格式轉換 完成!")
