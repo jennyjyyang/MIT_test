@@ -1,4 +1,6 @@
 # 忽略特定音檔
+voice_data/*.mp3
+voice_data/*.wav
 *.mp3
 *.wav
  
