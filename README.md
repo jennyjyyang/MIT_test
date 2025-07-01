@@ -6,7 +6,7 @@
 4. 拿掉句號全用逗號可以避免段落合成的電音，但是會比較容易出現結尾迴圈的狀況。
 
 ## 操作流程
-### .py檔從1跑到7然後接brezzy voice
+### .py檔從1跑到7然後接brezzy voice(改檔案路徑)
 
 ```bash
 #before start
@@ -21,7 +21,7 @@ export LD_LIBRARY_PATH=`poetry run python -c 'import os; import nvidia.cublas.li
 
 ```bash
 # run step6
-poetry run python 6_speaker_splitter.py voice_data/vocals/mdx_extra/autobiography/vocals_mono16k.wav voice_data/output/segments_for_splitter.json 
+poetry run python 6_speaker_splitter.py tone_data/vocals/mdx_extra/disappearlove/vocals_mono16k.wav tone_data/output/segments_for_splitter.json 
 # poetry run python 5_speaker_splitter.py 路徑/你的音檔.wav 路徑/你的json檔.json
 ```
 
@@ -112,3 +112,7 @@ poetry run python3 single_inference.py \
   --content_to_synthesize "嗯媽媽她說她很緊張啦，因為我是她第一個小孩嘛，然後我那時候發燒，她就嗯，不知道怎麼辦，就讓外婆來照顧我，外婆就說可能是水土不服吧，就從花蓮帶我回台中這樣，後來她還會說，妳乖乖我就帶妳去買襪子喔，可是妳不能跟妳媽媽講話喔。" \
   --output_path "../voice_data/output/result09.wav"
 ```
+
+# Easy DataSet
+## 操作流程
+### .py檔從1跑到5然後確認speaker接8(改檔案路徑)

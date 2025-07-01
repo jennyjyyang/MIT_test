@@ -5,9 +5,9 @@ demucs.separate.main([
     "--float32",
     "-n", "mdx_extra", 
     "-d","cuda",
-    "voice_data/autobiography.wav",
+    "tone_data/marriage.wav",
     "-o",
-    "voice_data/vocals/",
+    "tone_data/vocals/",
 ])
 
 print("人聲分離 完成!")

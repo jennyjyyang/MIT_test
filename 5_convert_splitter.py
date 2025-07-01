@@ -2,8 +2,8 @@ import json
 from datetime import timedelta
 
 # 輸入和輸出檔案
-input_file = "voice_data/output/voice_result_speakers.json"
-output_file = "voice_data/output/segments_for_splitter.json"
+input_file = "tone_data/output/marriage/voice_result_speakers.json"
+output_file = "tone_data/output/marriage/segments_for_splitter.json"
 
 # 將秒數轉換為 HH:MM:SS,mmm 格式
 def format_timestamp(seconds):
