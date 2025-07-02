@@ -6,7 +6,7 @@ authors = [
     {name = "Jenny"}
 ]
 readme = "README.md"
-requires-python = ">=3.12, <3.13"
+requires-python = ">=3.9, <3.13"
 dependencies = [
     "pandas (>=2.3.0,<3.0.0)",
     "whisperx (==3.3.2)",
@@ -20,3 +20,4 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+package-mode = false

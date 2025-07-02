@@ -133,7 +133,7 @@ def process_audio(input_audio_path, json_path):
     # Process each speaker
     for speaker in speakers:
         #output_path = output_dir / f"output-audio-{speaker.lower()}.wav"
-        output_dir = Path("tone_data/output")
+        output_dir = Path("voice_data/output")
         output_dir.mkdir(parents=True, exist_ok=True)  # 確保資料夾存在
         output_path = output_dir / f"output-audio-{speaker}.wav"
         print(f"\nProcessing speaker: {speaker}")

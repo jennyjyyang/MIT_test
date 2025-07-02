@@ -1,4 +1,14 @@
-# 忽略特定音檔
+# 忽略音檔
 *.mp3
 *.wav
+
+
+# 忽略虛擬環境資料夾
+.venv309w/
+.venv310p/
+.venv312/
+
+# 忽略BreezyVoice
+.BreezyVoice/
+
  

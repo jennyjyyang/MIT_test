@@ -11,7 +11,9 @@
 ```bash
 #before start
 cd ~/Desktop/MIT_test
-source .venv/bin/activate
+python3.12 -m venv .venv312
+source .venv312/bin/activate
+poetry install
 ```
 
 ```bash
@@ -21,14 +23,18 @@ export LD_LIBRARY_PATH=`poetry run python -c 'import os; import nvidia.cublas.li
 
 ```bash
 # run step6
-poetry run python 6_speaker_splitter.py tone_data/vocals/mdx_extra/disappearlove/vocals_mono16k.wav tone_data/output/segments_for_splitter.json 
+poetry run python 6_speaker_splitter.py voice_data/vocals/mdx_extra/autobiography/vocals_mono16k.wav voice_data/output/segments_for_splitter.json 
 # poetry run python 5_speaker_splitter.py 路徑/你的音檔.wav 路徑/你的json檔.json
 ```
 
 ```bash
 # before brezzy voice
+# clone repo from Brezzy Voice Github
+deactivate
 cd ~/Desktop/MIT_test/BreezyVoice
+python3.10 -m venv .venv310
 source .venv310/bin/activate
+pip install -r requirements.txt
 ```
 
 ```bash
@@ -115,4 +121,39 @@ poetry run python3 single_inference.py \
 
 # Easy DataSet
 ## 操作流程
-### .py檔從1跑到5然後確認speaker接8(改檔案路徑)
+### .py檔跑1-2-3-4.1-4.2-5.1(改檔案路徑)
+
+```bash
+#before start
+cd ~/Desktop/MIT_test
+source .venv312/bin/activate
+```
+
+```bash
+# before step4.1
+deactivate
+python3.9 -m venv .venv309w
+source .venv309w/bin/activate
+pip install -U openai-whisper
+pip install git+https://github.com/openai/whisper.git 
+pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
+sudo apt update && sudo apt install ffmpeg
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+pip install setuptools-rust
+```
+
+```bash
+# before step4.2
+deactivate
+python3.10 -m venv .venv310p
+source .venv310p/bin/activate
+pip install pyannote.audio
+# 修改speaker number
+```
+
+```bash
+# before step5.1
+deactivate
+source .venv312/bin/activate
+```

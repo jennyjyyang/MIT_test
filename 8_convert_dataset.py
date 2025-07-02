@@ -1,34 +1,30 @@
 import json
 
-# 輸入與輸出檔案名稱
+# === 檔案路徑設定 ===
 input_path = "tone_data/output/autobiography/segments_for_splitter.json"
 output_path = "tone_data/output/autobiography/segments_for_dataset.json"
+target_speaker = "SPEAKER_04"  # 指定你要作為回答者的 speaker
 
-# 讀取原始 JSON
+# === 讀取 JSON 檔案 ===
 with open(input_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 segments = data["segments"]
 
-# 載入原始 JSON
-with open(input_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-segments = data["segments"]
-
-# 將同 speaker 的對話合併
+# === 將連續同一 speaker 的發言合併（避免時間重疊太短造成切段） ===
 merged = []
 prev_speaker = None
 buffer = ""
-
 for seg in segments:
     speaker = seg["speaker"]
     text = seg["text"].strip()
 
     if speaker == prev_speaker:
-        buffer += text
+        # 若與前一個 speaker 相同，則合併文字
+        if text != buffer:  # 避免完全重複
+            buffer += text
     else:
-        if prev_speaker is not None:
+        if buffer:
             merged.append({"speaker": prev_speaker, "text": buffer})
         buffer = text
         prev_speaker = speaker
@@ -37,23 +33,23 @@ for seg in segments:
 if buffer:
     merged.append({"speaker": prev_speaker, "text": buffer})
 
-# 依據 SPEAKER_03 作為回答者，其餘為提問者建立 Q&A
+# === 組成 Q&A 配對 ===
 qa_pairs = []
 temp_question = ""
 
 for entry in merged:
-    if entry["speaker"] == "SPEAKER_05":
-        if temp_question:
+    if entry["speaker"] == target_speaker:
+        if temp_question.strip():
             qa_pairs.append({
-                "question": temp_question,
-                "answer": entry["text"]
+                "question": temp_question.strip(),
+                "answer": entry["text"].strip()
             })
             temp_question = ""
     else:
-        temp_question += entry["text"]
+        temp_question += entry["text"].strip()
 
-# 輸出 JSON
+# === 輸出 JSON ===
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(qa_pairs, f, ensure_ascii=False, indent=2)
 
-print("可讀格式轉換 完成!")
+print("QA格式轉換 完成！")

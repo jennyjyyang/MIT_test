@@ -11,7 +11,7 @@ def timestamp_to_ms(t):
 
 # 設定要切割的時間範圍
 start_time = timestamp_to_ms("00:03:12,471")
-end_time = timestamp_to_ms("00:03:38,149")
+end_time = timestamp_to_ms("00:03:28,149")
 
 # 切割並輸出
 clip = audio[start_time:end_time]

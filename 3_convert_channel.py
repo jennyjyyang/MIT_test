@@ -2,10 +2,10 @@ import subprocess
 import os
 
 # 原始音檔路徑
-input_path = "tone_data/vocals/mdx_extra/marriage/vocals.wav"
+input_path = "tone_data/vocals/mdx_extra/autobiography/vocals.wav"
 
 # 輸出音檔路徑
-output_path = "tone_data/vocals/mdx_extra/marriage/vocals_mono16k.wav"
+output_path = "tone_data/vocals/mdx_extra/autobiography/vocals_mono16k.wav"
 
 # 確保輸出資料夾存在
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
