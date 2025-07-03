@@ -13,7 +13,6 @@
 cd ~/Desktop/MIT_test
 python3.12 -m venv .venv312
 source .venv312/bin/activate
-poetry install
 ```
 
 ```bash
@@ -29,11 +28,12 @@ poetry run python 6_speaker_splitter.py voice_data/vocals/mdx_extra/autobiograph
 
 ```bash
 # before brezzy voice
-# clone repo from Brezzy Voice Github
 deactivate
+git clone https://github.com/mtkresearch/BreezyVoice.git
 cd ~/Desktop/MIT_test/BreezyVoice
 python3.10 -m venv .venv310
 source .venv310/bin/activate
+# 修改 requirements
 pip install -r requirements.txt
 ```
 
@@ -121,7 +121,7 @@ poetry run python3 single_inference.py \
 
 # Easy DataSet
 ## 操作流程
-### .py檔跑1-2-3-4.1-4.2-5.1(改檔案路徑)
+### .py檔跑1-2-3-4.1-4.2-5.1(改檔案路徑)(效果不佳)
 
 ```bash
 #before start
@@ -155,5 +155,39 @@ pip install pyannote.audio
 ```bash
 # before step5.1
 deactivate
+source .venv312/bin/activate
+```
+
+### .py檔跑1-2-3-4pw-5-8-9(改檔案路徑)(效果最好)
+
+```bash
+#before start
+cd ~/Desktop/MIT_test
+source .venv312/bin/activate
+```
+
+```bash
+# before step4pw
+deactivate
+git clone https://github.com/yinruiqing/pyannote-whisper.git
+cd ~/Desktop/MIT_test/pyannote-whisper
+pyenv local 3.9.13
+python -m venv .venv309
+source .venv309/bin/activate
+pip install -r ../requirements_pw.txt
+pip install -e .
+
+deactivate
+cd ~/Desktop/MIT_test/pyannote-whisper
+source .venv309/bin/activate
+```
+
+poetry export -f requirements.txt --without-hashes -o requirements.txt
+
+
+```bash
+# before step5
+deactivate
+cd ~/Desktop/MIT_test
 source .venv312/bin/activate
 ```

@@ -5,7 +5,7 @@ demucs.separate.main([
     "--float32",
     "-n", "mdx_extra", 
     "-d","cuda",
-    "tone_data/autobiography.wav",
+    "tone_data/women.wav",
     "-o",
     "tone_data/vocals/",
 ])

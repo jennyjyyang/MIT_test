@@ -1,11 +1,12 @@
 from pyannote.audio import Pipeline
 import torch
 import json
+import os
 
 # === 初始化 pipeline 與裝置 ===
 pipeline = Pipeline.from_pretrained(
     "pyannote/speaker-diarization-3.1",
-    use_auth_token="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")
+    use_auth_token=os.getenv("HUGGINGFACE_TOKEN"))
 
 pipeline.to(torch.device("cuda"))
 

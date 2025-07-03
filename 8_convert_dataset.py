@@ -1,9 +1,9 @@
 import json
 
 # === 檔案路徑設定 ===
-input_path = "tone_data/output/autobiography/segments_for_splitter.json"
-output_path = "tone_data/output/autobiography/segments_for_dataset.json"
-target_speaker = "SPEAKER_04"  # 指定你要作為回答者的 speaker
+input_path = "tone_data/output/women/segments_for_splitter.json"
+output_path = "tone_data/output/women/segments_for_dataset.json"
+target_speaker = "SPEAKER_06"  # 指定你要作為回答者的 speaker
 
 # === 讀取 JSON 檔案 ===
 with open(input_path, "r", encoding="utf-8") as f:
