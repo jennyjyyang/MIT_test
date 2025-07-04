@@ -189,6 +189,7 @@ cd ~/Desktop/MIT_test
 source .venv312/bin/activate
 ```
 
-### 最後用chatgpt生成QA
-
 ## Llama-Factory 操作流程
+### 用chatgpt生成QA然後.py檔跑10
+
+http://10.100.1.124:7860
