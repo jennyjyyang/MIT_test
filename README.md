@@ -1,5 +1,5 @@
-# TTS Model Pipeline
-## 0627結論
+# Fine tuning for Vocal
+## TTS Model Pipeline 結論
 1. speaker01_clip不能加逐字稿，電腦GPU跑不動。
 2. 有加逐字稿比較不會出現error的狀況。(幾乎沒有)
 3. 時間切割15s的效果比25s好。(speaker02_clip的效果比speaker01_clip好)
@@ -119,8 +119,8 @@ poetry run python3 single_inference.py \
   --output_path "../voice_data/output/result09.wav"
 ```
 
-# Easy DataSet
-## 操作流程
+# Fine tuning for tone
+## Easy DataSet 操作流程
 ### .py檔跑1-2-3-4.1-4.2-5.1(改檔案路徑)(效果不佳)
 
 ```bash
@@ -182,12 +182,13 @@ cd ~/Desktop/MIT_test/pyannote-whisper
 source .venv309/bin/activate
 ```
 
-poetry export -f requirements.txt --without-hashes -o requirements.txt
-
-
 ```bash
 # before step5
 deactivate
 cd ~/Desktop/MIT_test
 source .venv312/bin/activate
 ```
+
+### 最後用chatgpt生成QA
+
+## Llama-Factory 操作流程
