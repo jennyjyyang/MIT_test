@@ -1,15 +1,8 @@
 # 忽略音檔
-*.mp3
-*.wav
 
 # 忽略虛擬環境資料夾
-.venv309w/
-.venv310p/
-.venv312/
-.venv310t/
 
 # 忽略BreezyVoice
-.BreezyVoice/
-.pyannote-whisper/
+
 
  
