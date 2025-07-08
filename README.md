@@ -198,7 +198,7 @@ cd ~/Desktop/MIT_test/toneclean_data
 1. 簡體轉繁體 convert_language.py
 2. 加標點與斷句
 3. 刪除語者分離錯誤重複語句
-4. 對每筆回答進行分類
+4. 對每筆回答進行分類 4_devide_group.py 4_top2vec.py
 5. 清除低品質或錯誤的語料
 6. 微調資料不要過長
 7. 對同一個回答產生多個不同問題（反覆問答訓練）
