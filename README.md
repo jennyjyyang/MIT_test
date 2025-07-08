@@ -192,7 +192,7 @@ source .venv312/bin/activate
 ## Dataset 清理目標
 
 ```bash
-cd ~/Desktop/MIT_test/toneclean_data
+cd ~/Desktop/MIT_test/tone_clean
 ```
 
 1. 簡體轉繁體 convert_language.py
