@@ -6,7 +6,7 @@ authors = [
     {name = "Jenny"}
 ]
 readme = "README.md"
-requires-python = ">=3.9, <3.13"
+requires-python = ">=3.10, <3.13"
 dependencies = [
     "pandas (>=2.3.0,<3.0.0)",
     "whisperx (==3.3.2)",
@@ -14,7 +14,10 @@ dependencies = [
     "nvidia-cudnn-cu11 (>=9.10.2.21,<10.0.0.0)",
     "pydub (>=0.25.1,<0.26.0)",
     "demucs (>=4.0.1,<5.0.0)",
-    "opencc-python-reimplemented (>=0.1.7,<0.2.0)"
+    "opencc-python-reimplemented (>=0.1.7,<0.2.0)",
+    "sentence-transformers (>=5.0.0,<6.0.0)",
+    "scikit-learn (>=1.7.0,<2.0.0)",
+    "hdbscan (>=0.8.40,<0.9.0)"
 ]
 
 
