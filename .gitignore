@@ -6,6 +6,7 @@
 .venv309w/
 .venv310p/
 .venv312/
+.venv310t/
 
 # 忽略BreezyVoice
 .BreezyVoice/
