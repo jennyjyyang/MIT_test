@@ -6,8 +6,8 @@ from collections import defaultdict, OrderedDict
 from sklearn.decomposition import PCA
 
 # ===== 檔案設定 =====
-INPUT_FILE = "output/traditional.json"
-OUTPUT_FILE = "output/group02.json"
+INPUT_FILE = "output/sentence_clean.json"
+OUTPUT_FILE = "output/group04.json"
 
 # ===== 載入資料 =====
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
