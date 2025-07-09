@@ -1,0 +1,23 @@
+[project]
+name = "mit-test"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "linboso",email = "linboso0@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "opencc-python-reimplemented (>=0.1.7,<0.2.0)",
+    "sentence-transformers (>=5.0.0,<6.0.0)",
+    "hdbscan (>=0.8.40,<0.9.0)",
+    "faiss-gpu (>=1.7.2,<2.0.0)",
+    "numpy (>=1.26,<2.0)",
+    "scipy (<1.11)",
+    "top2vec @ git+https://github.com/ddangelov/Top2Vec.git@master",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

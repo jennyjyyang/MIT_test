@@ -1,5 +1,6 @@
 # 忽略音檔
 
 # 忽略虛擬環境資料夾
+.venv/
 
 # 忽略BreezyVoice
