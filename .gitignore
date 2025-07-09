@@ -3,4 +3,6 @@
 # 忽略虛擬環境資料夾
 .venv/
 
-# 忽略BreezyVoice
+# 忽略Model
+output/*_model/
+output/*.model/

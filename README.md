@@ -10,11 +10,24 @@ source .venv/bin/activate
 1. 簡體轉繁體 1_convert_language.py
 2. 加標點與斷句 2_seperate_sentence.py
 3. 刪除語者分離錯誤重複語句 3_remove_repeat.py
-4. 對每筆回答進行分類 4_devide_group.py 4_top2vec.py
+4. 對每筆回答進行分類 4_devide_group.py 4_top2vec.py 4_bertopic.py
 5. 清除低品質或錯誤的語料
 6. 微調資料不要過長 6_seperate_part.py
 7. 對同一個回答產生多個不同問題（反覆問答訓練）
 8. 添加原始模型訓練句
+
+### Sample
+
+group00: answer
+group01: answer, mini=2
+group02: answer, mini=2, label
+group03: sentence
+group04: sentence_clean
+group05: shortened01
+
+bertopic01: test
+bertopic02: 關鍵字修正
+
 
 ### 1️⃣ 簡體轉繁體
 🎯 目的：統一語言格式為台灣用字，避免訓練語氣混亂
@@ -67,15 +80,6 @@ fuzzywuzzy（模糊字串比對）
 ✅ 自動化：✅ 可批次分類，儲存為 type 欄位
 📝 備註：
 可配合選擇性訓練策略，例如僅訓練評論類回答
-
-Sample
-group00: answer
-group01: answer, mini=2
-group02: answer, mini=2, label
-group03: sentence
-group04: sentence_clean
-group05: shortened01
-
 
 ### 5️⃣ 清除低品質或錯誤的語料
 🎯 目的：避免訓練資料出現語病、非語氣句或空白內容
