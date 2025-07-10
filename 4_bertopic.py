@@ -17,10 +17,13 @@ vectorizer_model = CountVectorizer(tokenizer=jieba_tokenizer)
 
 # === 基本參數（使用者可自訂） ===
 INPUT_PATH = "output/shortened.json"
-OUTPUT_PATH = "output/bertopic02.json"
-SAVE_MODEL_PATH = "output/bertopic02_model"
-EMBEDDING_MODEL = SentenceTransformer("shibing624/text2vec-base-chinese")  # paraphrase-multilingual-mpnet-base-v2
-MIN_TOPIC_SIZE = 2
+OUTPUT_PATH = "output/bertopic08.json"
+SAVE_MODEL_PATH = "output/bertopic08_model"
+EMBEDDING_MODEL = SentenceTransformer("shibing624/text2vec-base-chinese") 
+# paraphrase-multilingual-mpnet-base-v2
+# shibing624/text2vec-base-chinese
+# uer/sbert-base-chinese-nli
+MIN_TOPIC_SIZE = 3
 
 # === 載入資料 ===
 with open(INPUT_PATH, "r", encoding="utf-8") as f:

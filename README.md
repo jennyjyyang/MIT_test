@@ -18,16 +18,27 @@ source .venv/bin/activate
 
 ### Sample
 
-group00: answer
-group01: answer, mini=2
-group02: answer, mini=2, label
-group03: sentence
-group04: sentence_clean
-group05: shortened01
+| group | input | mini size | label |
+|:---:|:---:|:---:|:---:|
+| 00 | answer | 5 | x |
+| 01 | answer | 2 | x |
+| 02 | answer | 2 | v |
+| 03 | sentence | 2 | v |
+| 04 | sentence_clean | 2 | v |
+| 05 | shortened | 2 | v |
 
-bertopic01: test
-bertopic02: 關鍵字修正
+| bertopic | MODEL | 關鍵字 | MIN_TOPIC_SIZE |
+|:---:|:---:|:---:|:---:|
+| 01 | shibing624/text2vec-base-chinese | x | 2 |
+| 02 | shibing624/text2vec-base-chinese | c-TF-ITF | 2 |
+| 03 | shibing624/text2vec-base-chinese | n-gram | 2 |
+| 04 | paraphrase-multilingual-mpnet-base-v2 | c-TF-ITF | 2 |
+| 05 | shibing624/text2vec-base-chinese | c-TF-ITF | 5 |
+| 06 | uer/sbert-base-chinese-nli | c-TF-ITF | 2 |
+| 07 | uer/sbert-base-chinese-nli | c-TF-ITF | 3 |
+| 08 | shibing624/text2vec-base-chinese | c-TF-ITF | 3 |
 
+個人感覺06效果比較好
 
 ### 1️⃣ 簡體轉繁體
 🎯 目的：統一語言格式為台灣用字，避免訓練語氣混亂

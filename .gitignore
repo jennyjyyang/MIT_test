@@ -4,5 +4,5 @@
 .venv/
 
 # 忽略Model
-output/*_model/
-output/*.model/
+output/*_model
+output/*.model

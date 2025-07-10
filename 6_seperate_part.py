@@ -42,7 +42,7 @@ for line in data:
     all_sentences.extend(split_by_punctuation(line, max_len=80))  # 可以依需要調整 max_len
 
 # 輸出新檔案
-with open("output/shortened01.json", "w", encoding="utf-8") as f:
+with open("output/shortened.json", "w", encoding="utf-8") as f:
     json.dump(all_sentences, f, ensure_ascii=False, indent=2)
 
 print("切段 完成!")
