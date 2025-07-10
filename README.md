@@ -13,7 +13,7 @@ source .venv/bin/activate
 4. 對每筆回答進行分類 4_devide_group.py 4_top2vec.py 4_bertopic.py
 5. 清除低品質或錯誤的語料
 6. 微調資料不要過長 6_seperate_part.py
-7. 對同一個回答產生多個不同問題（反覆問答訓練）
+7. 對同一個回答產生多個不同問題（反覆問答訓練）7_folder.py
 8. 添加原始模型訓練句
 
 ### Sample
