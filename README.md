@@ -78,7 +78,18 @@ answer: 你覺得面對愛情與人生，我們什麼時候該學會清醒？
 1. 對同一個回答產生多個不同問題（反覆問答訓練）11_combine_dataset.py
 2. 添加原始模型訓練句
 
-## Llama-Factory 操作流程
-### 用chatgpt生成QA然後.py檔跑10
+## Llama-Factory
+### 操作流程
 
 http://10.100.1.124:7860
+
+```bash
+# 複製檔案到資料夾
+cp output/qa_dataset_all.json ~/Documents/LLaMA-Factory/data/
+# 開啟檔案修改
+nano ~/Documents/LLaMA-Factory/data/dataset_info.json
+# Ctrl + O 儲存
+# Ctrl + X 離開
+```
+
+舊版:用chatgpt生成QA然後.py檔跑10 (main)
