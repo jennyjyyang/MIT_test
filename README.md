@@ -93,3 +93,19 @@ nano ~/Documents/LLaMA-Factory/data/dataset_info.json
 ```
 
 舊版:用chatgpt生成QA然後.py檔跑10 (main)
+
+### Sample
+
+參考WeClone https://github.com/xming521/WeClone/blob/master/settings.template.jsonc
+
+train_01
+input: qa_dataset_all
+model: Qwen2.5-7B-Instruct
+Learning rate: 1e-4
+Max samples: 1000
+Batch size: 8
+Gradient accumulation: 4
+Logging steps: 10
+Save steps: 100
+Warmup steps: 1
+LoRA+ LR ratio: 16
