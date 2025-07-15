@@ -98,6 +98,8 @@ nano ~/Documents/LLaMA-Factory/data/dataset_info.json
 
 參考WeClone https://github.com/xming521/WeClone/blob/master/settings.template.jsonc
 
+---
+
 train_01  
 
 input: qa_dataset_all  
@@ -120,3 +122,13 @@ Warmup steps: 1
 LoRA rank: 4  
 LoRA dropout: 0.3  
 LoRA+ LR ratio: 16  
+
+---
+
+螢幕截圖順序
+
+| Top-p | Temperature |
+|:---:|:---:|
+| 0.65 | 0.5 |
+| 0.65 | 0.95 |
+| 0.7 | 0.95 |
