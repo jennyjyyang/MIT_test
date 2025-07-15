@@ -98,14 +98,25 @@ nano ~/Documents/LLaMA-Factory/data/dataset_info.json
 
 參考WeClone https://github.com/xming521/WeClone/blob/master/settings.template.jsonc
 
-train_01 <br>
-input: qa_dataset_all <br>
-model: Qwen2.5-7B-Instruct <br>
-Learning rate: 1e-4 <br>
-Max samples: 1000 <br>
-Batch size: 8 <br>
-Gradient accumulation: 4 <br>
-Logging steps: 10 <br>
-Save steps: 100 <br>
-Warmup steps: 1 <br>
-LoRA+ LR ratio: 16 <br>
+train_01  
+
+input: qa_dataset_all  
+model: Qwen2.5-7B-Instruct  
+
+Learning rate: 1e-4  
+Epochs: 2  
+Max samples: 10000  
+Compute type: fp16  
+
+Cutoff length: 2048  
+Batch size: 8  
+Gradient accumulation: 4  
+LR scheduler: cosine  
+
+Logging steps: 10   
+Save steps: 100  
+Warmup steps: 1  
+
+LoRA rank: 4  
+LoRA dropout: 0.3  
+LoRA+ LR ratio: 16  
