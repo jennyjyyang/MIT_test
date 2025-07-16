@@ -1,4 +1,4 @@
-# Fine tune for tone
+# Fine tune for style
 ## Before QA Dataset Generation
 ### 操作流程
 
@@ -11,9 +11,9 @@ source .venv/bin/activate
 1. 簡體轉繁體 1_convert_language.py
 2. 加標點與斷句 2_seperate_sentence.py
 3. 刪除語者分離錯誤重複語句 3_remove_repeat.py
-4. 微調資料不要過長 4__seperate_part.py
+4. 微調資料不要過長 4_seperate_part.py
 5. 對每筆回答進行分類 5_devide_group.py 5_top2vec.py 5_bertopic.py
-6. 輸出回答 7_folder.py 7_convert_txt.py
+6. 輸出回答 6_folder.py 6_convert_txt.py
 
 ### Sample
 
@@ -25,6 +25,10 @@ source .venv/bin/activate
 | 03 | sentence | 2 | v |
 | 04 | sentence_clean | 2 | v |
 | 05 | shortened | 2 | v |
+
+n_neighbors=5  
+n_components=5  
+min_dist=0.0  
 
 | bertopic | MODEL | 關鍵字 | MIN_TOPIC_SIZE |
 |:---:|:---:|:---:|:---:|
@@ -125,10 +129,63 @@ LoRA+ LR ratio: 16
 
 ---
 
+train_02  
+
+input: qa_dataset_part  
+model: Qwen2.5-7B-Instruct  
+
+Learning rate: 1e-4  
+Epochs: 2  
+Max samples: 10000  
+Compute type: fp16  
+
+Cutoff length: 2048  
+Batch size: 8  
+Gradient accumulation: 4  
+LR scheduler: cosine  
+
+Logging steps: 10   
+Save steps: 100  
+Warmup steps: 1  
+
+LoRA rank: 4  
+LoRA dropout: 0.3  
+LoRA+ LR ratio: 16  
+
+---
+
 螢幕截圖順序
 
-| Top-p | Temperature |
-|:---:|:---:|
-| 0.65 | 0.5 |
-| 0.65 | 0.95 |
-| 0.7 | 0.95 |
+| Model | Top-p | Temperature |
+|:---:|:---:|:---:|
+| train_01 | 0.65 | 0.5 |
+| train_01 | 0.65 | 0.95 |
+| train_01 | 0.7 | 0.95 |
+| train_02 | 0.65 | 0.5 |
+| train_02 | 0.65 | 0.95 |
+| train_02 | 0.7 | 0.95 |
+
+# Fine tune for Context
+## Answers 分組
+### 操作流程
+
+5_bertopic.py
+5_similarity.py (已合併到0)
+0_context.py
+
+```bash
+cd ~/Desktop/MIT_test
+poetry env activate
+source .venv/bin/activate
+export OPENAI_API_KEY="你的金鑰"
+```
+
+### Sample
+
+關鍵字: c-TF-ITF  
+
+| bertopic | MODEL | MIN_TOPIC_SIZE | n_neighbors=5 | n_components | min_dist |
+|:---:|:---:|:---:|:---:|:---:|
+| 09 | uer/sbert-base-chinese-nli | 5 | 10 | 3 | 0.1 |
+| 10 | uer/sbert-base-chinese-nli | 5 | 5 | 3 | 0.1 |
+| 11 | shibing624/text2vec-base-chinese | 5 | 5 | 5 | 0.0 |
