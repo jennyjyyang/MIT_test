@@ -1,5 +1,5 @@
 # === ✅ 使用者可修改參數區 ===
-QUESTION = "可以分享你養狗的經驗嗎？"
+QUESTION = "你覺得自己是一個怎麼樣的人？"
 GROUPED_JSON_PATH = "output/bertopic11.json"
 EMBEDDING_MODEL_NAME = "shibing624/text2vec-base-chinese"
 OPENAI_MODEL_NAME = "gpt-4-0125-preview"
