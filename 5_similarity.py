@@ -48,5 +48,5 @@ def find_top_n_topics(input_sentence: str, top_n=5):
 
 # === 🧪 測試用 ===
 if __name__ == "__main__":
-    test_sentence = "可以分享你養狗的經驗嗎？"
+    test_sentence = "你覺得導致美國通貨膨脹的原因是甚麼？"
     top_matches = find_top_n_topics(test_sentence, top_n=5)
