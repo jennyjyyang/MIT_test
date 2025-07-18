@@ -185,7 +185,7 @@ export OPENAI_API_KEY="你的金鑰"
 關鍵字: c-TF-ITF  
 
 | bertopic | MODEL | MIN_TOPIC_SIZE | n_neighbors=5 | n_components | min_dist |
-|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|:---:|
 | 09 | uer/sbert-base-chinese-nli | 5 | 10 | 3 | 0.1 |
 | 10 | uer/sbert-base-chinese-nli | 5 | 5 | 3 | 0.1 |
 | 11 | shibing624/text2vec-base-chinese | 5 | 5 | 5 | 0.0 |
