@@ -85,6 +85,11 @@ answer: 你覺得面對愛情與人生，我們什麼時候該學會清醒？
 ## Llama-Factory
 ### 操作流程
 
+```bash
+source .venv/bin/activate
+llamafactory-cli webui
+```
+
 http://10.100.1.124:7860
 
 ```bash
@@ -136,6 +141,31 @@ model: Qwen2.5-7B-Instruct
 
 Learning rate: 1e-4  
 Epochs: 2  
+Max samples: 10000  
+Compute type: fp16  
+
+Cutoff length: 2048  
+Batch size: 8  
+Gradient accumulation: 4  
+LR scheduler: cosine  
+
+Logging steps: 10   
+Save steps: 100  
+Warmup steps: 1  
+
+LoRA rank: 4  
+LoRA dropout: 0.3  
+LoRA+ LR ratio: 16  
+
+---
+
+train_08  
+
+input: qa_dataset_all  
+model: Qwen2.5-7B-Instruct  
+
+Learning rate: 1e-4  
+Epochs: 10  
 Max samples: 10000  
 Compute type: fp16  
 
