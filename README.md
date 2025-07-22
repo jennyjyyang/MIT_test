@@ -195,13 +195,9 @@ LoRA+ LR ratio: 16
 | train_02 | 0.65 | 0.95 |
 | train_02 | 0.7 | 0.95 |
 
-# Fine tune for Context
+# Fine tune for Content
 ## Answers 分組
 ### 操作流程
-
-5_bertopic.py
-5_similarity.py (已合併到0)
-0_context.py
 
 ```bash
 cd ~/Desktop/MIT_test
@@ -209,6 +205,10 @@ poetry env activate
 source .venv/bin/activate
 export OPENAI_API_KEY="你的金鑰"
 ```
+
+5_bertopic.py  
+5_similarity.py (已合併到0)  
+0_context.py  
 
 ### Sample
 
