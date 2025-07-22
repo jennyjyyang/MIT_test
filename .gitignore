@@ -1,8 +1,2 @@
-# 忽略音檔
-
 # 忽略虛擬環境資料夾
 .venv/
-
-# 忽略Model
-output/*_model
-output/*.model
