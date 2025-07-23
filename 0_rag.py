@@ -1,10 +1,8 @@
 # 載入必要套件
 from typing import Literal, Annotated
 import typing
-typing.Annotated = Annotated
-globals()["Annotated"] = Annotated
 
-from pydantic import BaseModel, Field, ConfigDict  # ✅ 使用 pydantic v2 的方式
+from pydantic import BaseModel, Field
 from langchain_core.documents import Document
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
@@ -12,9 +10,10 @@ from langchain.tools.retriever import create_retriever_tool
 from langgraph.graph import MessagesState, StateGraph, START, END
 from langchain_community.chat_models import ChatOpenAI
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain_core.tools import tool, Tool
+from langchain_core.tools import tool
 from langchain_core.runnables import RunnableConfig
 from langchain_core.messages import AIMessage, HumanMessage
+from langgraph.prebuilt import ToolNode
 import json
 
 # 讀取的 JSON 檔
@@ -38,21 +37,17 @@ retriever = vectorstore.as_retriever(
     search_type="similarity"                          # 使用語意相似度搜尋
 )
 
-# 封裝 retriever 為 tool 函式
+# 定義工具的輸入
 class RetrieverInput(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    """語意查詢的輸入格式"""
     query: str = Field(description="使用者的提問內容")
 
-@tool(args_schema=RetrieverInput)
-def retrieve_qa_snippets(input: RetrieverInput) -> str:
+# 定義工具 function
+@tool
+def retrieve_qa_snippets(query: str) -> str:
     """根據語者 QA 資料回傳相關的知識語句。"""
-    return f"這裡是模擬回傳與「{input.query}」有關的 QA 資料"
-
-# 包裝成 LangChain tool，可以被 Agent 使用
-# retriever_tool = Tool(
-    # name="retrieve_qa_snippets",
-    # func=retrieve_qa_snippets,
-    # description="根據語者 QA 資料回傳相關的知識語句。")
+    docs = retriever.invoke(query)
+    return "\n".join([d.page_content for d in docs if d and hasattr(d, "page_content")])
 
 # 3. Generate query
 # 用 GPT 模型生成回應或觸發檢索工具，設定只學習內容
@@ -67,7 +62,11 @@ response_model = ChatOpenAI(
 
 # 根據目前的 messages 狀態，用 GPT 模型生成回答
 def generate_query_or_respond(state: MessagesState):
-    messages = state["messages"]  # ✅ 這裡應該是 list[BaseMessage]
+    messages = state["messages"]
+    # 防呆：確保所有訊息都是 BaseMessage 實體
+    if isinstance(messages[0], dict):
+        messages = [HumanMessage(**m) if m["role"] == "user" else AIMessage(**m) for m in messages]
+
     response = response_model.invoke(
         messages,
         tools=[retrieve_qa_snippets],
@@ -190,12 +189,7 @@ graph = workflow.compile()
 # 實際執行整個對話流程，從使用者輸入開始
 for chunk in graph.stream(
     {
-        "messages": [   # 初始對話訊息
-            {
-                "role": "user",
-                "content": "你認為甚麼是全球化?"  # 使用者問題
-            }
-        ]
+        "messages": [HumanMessage(content="你認為甚麼是全球化?")]
     }
 ):
     for node, update in chunk.items():               # 每個流程節點的回傳結果
