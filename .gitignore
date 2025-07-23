@@ -1,7 +1,8 @@
 # 忽略音檔
+*.wav
 
 # 忽略虛擬環境資料夾
-.venv/
+.venv*/
 
 # 忽略Model
 output/*_model
