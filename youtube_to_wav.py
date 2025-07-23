@@ -5,9 +5,11 @@ import os
 '''
 Install required tools:
 pip install yt-dlp pydub
+poetry add yt-dlp
+poetry add pydub
 
 You also need FFmpeg (if not already installed):
-Ubuntu: sudo apt install ffmpegs
+sudo apt install ffmpeg
 '''
 
 def youtube_to_wav(youtube_url, output_dir="output/wav_files", base_filename="audio", count=0):
