@@ -160,9 +160,14 @@ source .venv312/bin/activate
 
 ### .py檔跑1-2-3-4pw-5-8-9(改檔案路徑)(效果最好)
 
+0_123.py = .py 1+2+3
+0_589.py = .py 5+8+9
+
 ```bash
 #before start
 cd ~/Desktop/MIT_test
+pyenv shell 3.12.5
+python -m venv .venv312
 source .venv312/bin/activate
 ```
 
@@ -171,9 +176,9 @@ source .venv312/bin/activate
 deactivate
 git clone https://github.com/yinruiqing/pyannote-whisper.git
 cd ~/Desktop/MIT_test/pyannote-whisper
-pyenv local 3.9.13
-python -m venv .venv309
-source .venv309/bin/activate
+pyenv shell 3.10
+python -m venv .venv310
+source .venv310/bin/activate
 pip install -r ../requirements_pw.txt
 pip install -e .
 
